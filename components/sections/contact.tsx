@@ -17,11 +17,12 @@ const SOCIALS = [
 ];
 
 const CONTACT_ITEMS = [
-    { label: "Email", value: "hello@simplesfa.com" },
-    { label: "Phone", value: "+234 808 393 8612\n+234 816 995 6949" },
+    { label: "Email", value: "info@kinosmartng.com", href: "mailto:info@kinosmartng.com" },
+    { label: "Phone", value: "+234 808 393 8612\n+234 816 995 6949", href: ["tel:+2348083938612", "tel:+2348169956949"] },
     {
         label: "Location",
         value: "1st Floor, Suite 12, Toscanini plaza, 26 Oriyomi Street off Olowu Street Ikeja Lagos Nigeria (opp Computer village Underbridge)",
+        href: "https://maps.app.goo.gl/CV42jGFUqKuMjS1h8",
     },
 ];
 
@@ -109,7 +110,7 @@ export default function Contact() {
             <div className="mx-auto max-w-7xl space-y-12">
 
                 {/* Top two-column grid */}
-                <div className="grid md:grid-cols-2 gap-16 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
                     {/* Left — CTA copy + contact details */}
                     <div ref={headingRef}>
@@ -131,9 +132,29 @@ export default function Contact() {
                                     <span className="text-xs font-semibold uppercase tracking-widest text-gray-400 w-20 pt-0.5 shrink-0">
                                         {item.label}
                                     </span>
-                                    <span className="text-sm text-gray-700 whitespace-pre-line">
-                                        {item.value}
-                                    </span>
+                                    <div className="flex flex-col gap-0.5">
+                                        {Array.isArray(item.href) ? (
+                                            // Multiple links (phone numbers)
+                                            item.value.split("\n").map((line, i) => (
+                                                <a
+                                                    key={i}
+                                                    href={(item.href as string[])[i]}
+                                                    className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                                                >
+                                                    {line}
+                                                </a>
+                                            ))
+                                        ) : (
+                                            <a
+                                                href={item.href}
+                                                target={item.href.startsWith("http") ? "_blank" : undefined}
+                                                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                                                className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                                            >
+                                                {item.value}
+                                            </a>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
                         </div>
