@@ -13,12 +13,11 @@ type Partner = {
 };
 
 const partners: Partner[] = [
-    { name: "Acme Corp", logo: "/logos/miden.svg" },
-    { name: "NovaTech", logo: "/logos/panovest.png" },
+    { name: "Miden", logo: "/logos/miden.svg" },
+    { name: "Panovest", logo: "/logos/panovest.png" },
     { name: "Reditton" },
-    { name: "Meridian", logo: "/logos/gigm.png" },
-    { name: "Apex Labs", logo: "/logos/cochda.png" },
-    { name: "Crestline" },
+    { name: "Gigm", logo: "/logos/gigm.png" },
+    { name: "Cochda" },
     { name: "Sk&T construct" },
 ];
 
@@ -95,7 +94,7 @@ export default function TrustedBy() {
                         {logoSet.map((partner, i) => (
                             <div
                                 key={i}
-                                className="flex items-center justify-center shrink-0 h-10 opacity-50 grayscale hover:opacity-90 hover:grayscale-0 transition-all duration-300"
+                                className="flex items-center justify-center shrink-0 h-10 opacity-50 hover:opacity-90 hover:grayscale transition-all duration-300"
                             >
                                 {partner.logo ? (
                                     <Image

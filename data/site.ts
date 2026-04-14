@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-    name: "KinoSmart",
+    name: "s",
     url: "https://kinosmartng.com",
 
     hero: {
@@ -12,11 +12,11 @@ export const siteConfig = {
     },
 
     metadata: {
-        title: "KinoSmart | High-Performance Computing & Worktool Solutions",
+        title: "Kinosmart | High-Performance Computing & Worktool Solutions",
         description:
             "KinoSmart provides high-performance computing solutions for Nigeria’s fastest-growing teams. We procure, optimize, and manage elite hardware including MacBooks, AI workstations, repair services, and software solutions to eliminate operational lag and scale productivity.",
         keywords: [
-            "KinoSmart",
+            "Kinosmart",
             "high-performance computing Nigeria",
             "MacBook procurement Nigeria",
             "AI workstation Nigeria",
@@ -26,16 +26,26 @@ export const siteConfig = {
             "IT hardware procurement",
         ],
         openGraph: {
-            title: "KinoSmart | High-Performance Computing Solutions",
+            title: "Kinosmart | High-Performance Computing Solutions",
             description:
                 "Elite hardware procurement, repair, and software solutions for fast-growing teams in Nigeria.",
             type: "website",
+            url: "https://kinosmartng.com",
+            images: [
+                {
+                    url: "https://kinosmartng.com/og-image.jpeg",
+                    width: 1200,
+                    height: 630,
+                    alt: "Kinosmart – High-Performance Computing Solutions",
+                },
+            ],
         },
         twitter: {
             card: "summary_large_image",
-            title: "KinoSmart | High-Performance Computing Solutions",
+            title: "Kinosmart | High-Performance Computing Solutions",
             description:
-                "Elite hardware, repair, and software solutions powering Nigeria’s fastest-growing teams.",
+                "Elite hardware, repair, and software solutions powering Nigeria's fastest-growing teams.",
+            images: ["https://kinosmartng.com/og-image.jpeg"],
         },
     } satisfies Metadata,
 };
