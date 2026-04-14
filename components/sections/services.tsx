@@ -158,7 +158,7 @@ export default function OurServices() {
                         Our Services
                     </span>
                     <h2 className="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight mb-4">
-                        Everything your team needs, in total harmony.
+                        Everything your team needs, all in one place.
                     </h2>
                     <p className="text-sm md:text-base text-gray-500 leading-relaxed">
                         From sourcing elite hardware to keeping it running at peak performance,

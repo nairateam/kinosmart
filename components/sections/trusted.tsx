@@ -13,11 +13,11 @@ type Partner = {
 };
 
 const partners: Partner[] = [
-    { name: "Miden", logo: "/logos/miden.svg" },
     { name: "Panovest", logo: "/logos/panovest.png" },
     { name: "Reditton" },
     { name: "Gigm", logo: "/logos/gigm.png" },
-    { name: "Cochda" },
+    { name: "Miden", logo: "/logos/miden.svg" },
+    { name: "Cothda" },
     { name: "Sk&T construct" },
 ];
 
