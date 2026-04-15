@@ -71,7 +71,9 @@ const services: ServiceCard[] = [
 export default function OurServices() {
     const sectionRef = useRef<HTMLElement>(null);
     const carouselRef = useRef<HTMLDivElement>(null);
+    const carouselApiRef = useRef<{ play: () => void; stop: () => void; reset: () => void } | null>(null);
 
+    // 2. Replace your useEffect with this:
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.fromTo(
@@ -86,6 +88,15 @@ export default function OurServices() {
                         trigger: carouselRef.current,
                         start: "top 80%",
                         toggleActions: "play none none reverse",
+                        onEnter: () => {
+                            // Jump to slide 0, then start autoplay
+                            carouselApiRef.current?.reset();
+                            carouselApiRef.current?.play();
+                        },
+                        onLeaveBack: () => {
+                            // Stop when scrolled back above the section
+                            carouselApiRef.current?.stop();
+                        },
                     },
                 }
             );
@@ -169,11 +180,12 @@ export default function OurServices() {
                 <div ref={carouselRef} className="mt-10">
                     <EmblaCarousel
                         slides={slides}
-                        options={{ loop: true }}
+                        options={{ loop: true, align: "start" }}
                         autoplay={true}
                         autoplayDelay={2500}
                         gap={16}
                         slideClassName="w-[85vw] md:w-[45%]"
+                        onInit={(api) => { carouselApiRef.current = api; }}
                     />
                 </div>
             </div>

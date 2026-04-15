@@ -16,6 +16,7 @@ type EmblaCarouselProps = {
     className?: string;
     slideClassName?: string;
     gap?: number; // gap in px between slides
+    onInit?: (api: { play: () => void; stop: () => void; reset: () => void }) => void;
 };
 
 export default function EmblaCarousel({
@@ -28,9 +29,10 @@ export default function EmblaCarousel({
     className = "",
     slideClassName = "",
     gap = 16,
+    onInit,
 }: EmblaCarouselProps) {
     const autoplayPlugin = useRef(
-        Autoplay({ delay: autoplayDelay, stopOnInteraction: true })
+        Autoplay({ delay: autoplayDelay, stopOnInteraction: true, playOnInit: false })
     );
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -58,11 +60,23 @@ export default function EmblaCarousel({
         onSelect();
         emblaApi.on("select", onSelect);
         emblaApi.on("reInit", onSelect);
+
+        if (onInit) {
+            onInit({
+                play: () => autoplayPlugin.current.play(),
+                stop: () => autoplayPlugin.current.stop(),
+                reset: () => {
+                    emblaApi.scrollTo(0, true); // jump to first slide instantly
+                    autoplayPlugin.current.stop();
+                },
+            });
+        }
+
         return () => {
             emblaApi.off("select", onSelect);
             emblaApi.off("reInit", onSelect);
         };
-    }, [emblaApi, onSelect]);
+    }, [emblaApi, onSelect, onInit]);
 
     const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
