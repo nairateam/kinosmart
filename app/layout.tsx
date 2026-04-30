@@ -5,6 +5,7 @@ import { siteConfig } from "@/data/site";
 import Footer from "@/components/layout/Footer";
 import SmoothScroll from "@/components/layout/smooth-scroll";
 import { Metadata } from "next";
+import WhatsAppButton from "@/components/ui/whatsapp-float";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -34,6 +35,10 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <WhatsAppButton
+            phoneNumber="2348083938612"
+            message="Hi Kinosmart, my name is..."
+          />
         </SmoothScroll>
       </body>
     </html>
